@@ -61,10 +61,7 @@ public class BuilderQuery {
         SqlRetModel sqlRetModel = createWhereSql(data, usePlaceholder);
         stringBuffer.append(sqlRetModel.getSqlStr());
 
-        if (data.getOrderBy() != null && !"".equals(data.getOrderBy())) {
-            stringBuffer.append(" ORDER BY ");
-            stringBuffer.append(data.getOrderBy());
-        }
+
         if (data.getGroupBy() != null && !"".equals(data.getGroupBy())) {
             stringBuffer.append(" GROUP BY ");
             stringBuffer.append(data.getGroupBy());
@@ -73,6 +70,12 @@ public class BuilderQuery {
             stringBuffer.append(" HAVING ");
             stringBuffer.append(data.getHaving());
         }
+        if (data.getOrderBy() != null && !"".equals(data.getOrderBy())) {
+            stringBuffer.append(" ORDER BY ");
+            stringBuffer.append(data.getOrderBy());
+        }
+
+
         sqlRetModel.setCurrentPage(data.getPagingCurrentPage());
         sqlRetModel.setItemsPerPage(data.getPagingItemsPerPage());
         sqlRetModel.setSqlStr(stringBuffer.toString());
